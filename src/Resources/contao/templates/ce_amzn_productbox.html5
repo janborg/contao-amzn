@@ -1,0 +1,52 @@
+
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+    
+<div class="amzn amzn_product_box">
+    <h2>
+        <a class="amzn_product_title" href="<?=$this->DetailPageUrl;?>" target="_blank"><?=$this->ProductTitle ;?></a>
+    </h2>
+    <div class="amzn amzn_thumb">
+        <figure class="image_container">
+            <a href="<?=$this->Images[0]['LargeImage']['URL'];?>" data-lightbox="lb290">
+                <img src="<?=$this->Images[0][$this->amzn_Imagesize]['URL'];?>" alt="<?=$this->ProductTitle ;?>">
+            </a>
+        </figure>
+        <div class="amzn amzn_product_gallery">
+            <?php foreach ($this->Images as $n=>$image): ?>
+            <figure class="amzn_thumb_image" style="display: none">
+                <a href="<?=$image['LargeImage']['URL'];?>" data-lightbox="lb290">
+                    <img src="<?=$image['TinyImage']['URL'];?>">
+                </a>
+            </figure>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="amzn amzn_product_features">
+        <ul>
+            <?php foreach ($this->Features as $i=>$feature): ?>
+            <li><?=$feature;?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div class="amzn_product_box_footer">
+        <div class="amzn amzn_pricing">
+            <span class="amzn_list_price"><?=$this->ListPrice['FormattedPrice'] ;?></span>
+            <span class="amzn_offer_price"><?=$this->Offer['OfferListing']['Price']['FormattedPrice'] ;?></span>
+            <?php if ($this->Offer['OfferListing']['IsEligibleForPrime']=1): ?>
+                <a class="amzn_prime_lable" href="https://www.amazon.de/gp/prime/?tag=<?=$this->AMZN_TAG ?>" title="Amazon Prime" rel="nofollow" target="_blank"></a>
+            <?php endif; ?>
+            </div>
+        <div>
+            <a class="amzn-button amzn_icon" href="<?=$this->DetailPageUrl;?>" title="<?=$this->ProductTitle ;?>" target="_blank" rel="nofollow">
+                Auf Amazon kaufen
+            </a>
+        </div>
+        <div>
+            <span class="amzn_availability"><?=$this->Offer['OfferListing']['Availability'] ;?></span>
+        </div>
+    </div> 
+</div>
+
+<?php $this->endblock(); ?>
