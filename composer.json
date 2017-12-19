@@ -1,0 +1,32 @@
+{
+    "name":"janborg/contao-amznpai",
+    "description":"Amazon Product Advertising API f�r Contao",
+    "keywords":["Amazon","API","ProductAdvertising"],
+    "type":"contao-bundle",
+    "license":"LGPL-3.0+",
+    "authors":[
+        {
+            "name":"Jan L�nborg",
+            "homepage":""
+        }
+    ],
+    "require":{
+        "php":"^5.6|^7.1",
+        "contao/core-bundle":"^4.4",
+		"exeu/apai-io":"^2.1"
+    },
+    "require-dev": {
+         "contao/manager-plugin": "^2.0"
+    },
+    "conflict": {
+         "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Janborg\\AmznPai\\": "src/"
+          }
+      },
+    "extra":{
+      "contao-manager-plugin": "Janborg\\AmznPai\\ContaoManager\\Plugin"
+    }
+}
